@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: postgres:15
+    container_name: my-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./initdb/:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+
+  api:
+    build: ./express_server
+    container_name: express-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  db_data:

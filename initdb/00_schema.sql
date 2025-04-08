@@ -65,3 +65,8 @@ CREATE TABLE news_articles_sentiments (
     analysis_date DATE NOT NULL,
     FOREIGN KEY (article_id) REFERENCES news_articles(id) ON DELETE CASCADE
 );
+CREATE INDEX idx_btcusd_1h_timestamp ON btcusd_1h (timestamp);
+CREATE INDEX idx_btcusd_4h_timestamp ON btcusd_4h (timestamp);
+CREATE INDEX idx_btcusd_1d_timestamp ON btcusd_1d (timestamp);
+CREATE INDEX idx_btcusd_1w_timestamp ON btcusd_1w (timestamp);
+CREATE INDEX idx_btcusd_1m_timestamp ON btcusd_1m (timestamp);
